@@ -2,19 +2,19 @@
   // 1) What is the purpose of the 'this keyword'?
 
       //Answer
-
+    //    To build contrustor functions
   // 2) What are the four rules that govern what the 'this keyword' is bound to and describe each?
 
       //Answer
-
+      // left of invoke,
   // 3) What is the difference between call and apply?
 
       //Answer
-
+// the array notation in apply
   // 4) What does .bind do?
 
       //Answer
-
+      // allows you to pass new parameter in to exsiting functions
 
 //Next Problem
 
@@ -24,15 +24,32 @@
   //getUsername --> which is a function that returns the current object's username property. *Don't use 'user' instead use the 'this' keyword*
 
     //Code Here
+var user = {
+  username: "Domd0101",
+  email: "Domd0101@ymail.com",
+  getUsername: function(){
+    return this.username;
+  }
+ }
 
 //Now, invoke the getUsername method and verify you got the username of the object and not anything else.
 
+console.log(user.getUsername())
 
 //Next Problem
 
 
 // Write a constructor function, including method definitions, which will make the following function invocations function properly.
-
+var Car = function(make,model,year){
+  this.make = make;
+  this.model = model;
+  this.year = year;
+  this.move = 0;
+  this.moveCar = function(){
+    this.move= this.move + 10;
+    return this.move
+  }
+}
   //Function Invocations Here
 
 var prius = new Car('Toyota', 'Prius', 2011);
@@ -56,6 +73,9 @@ var getYear = function(){
 //Note(no tests)
   //Code Here
 
+getYear.call(prius);
+getYear.call(mustang);
+
 
 //New Problem
 
@@ -75,10 +95,13 @@ var userName = getMyUsername(); //Fix this
 //Note(no tests)
   //Answer Here
 
+//"iliketurtles"
+
 //In the example above, what is the 'this keyword' bound to when getMyUsername runs?
 
   //Answer Here
-
+//the username key in myUser
 
 //Fix the getMyUsername invocation (stored in the userName variable, at the bottom of the above code) so that userName will be equal to 'iliketurtles'.
 
+getMyUsername.call(myUser)
